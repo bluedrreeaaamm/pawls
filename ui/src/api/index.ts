@@ -2,6 +2,8 @@ import axios from 'axios';
 
 import { Annotation, RelationGroup, PdfAnnotations } from '../context';
 
+axios.defaults.baseURL = 'http://0.0.0.0:8000';
+
 export interface Token {
     x: number;
     y: number;
@@ -26,7 +28,7 @@ function docURL(sha: string): string {
 }
 
 export function pdfURL(sha: string): string {
-    return `${docURL(sha)}/pdf`;
+    return `${axios.defaults.baseURL}${docURL(sha)}/pdf`;
 }
 
 export async function getTokens(sha: string): Promise<PageTokens[]> {
