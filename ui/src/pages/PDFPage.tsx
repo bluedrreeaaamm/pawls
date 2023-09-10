@@ -54,6 +54,10 @@ enum ViewState {
 
 export const PDFPage = () => {
     const { sha } = useParams<{ sha: string }>();
+    if (!sha) {
+        // handle the error, either by rendering a specific component or throwing an error
+        throw new Error("sha must be provided");
+    }
     const [viewState, setViewState] = useState<ViewState>(ViewState.LOADING);
 
     const [doc, setDocument] = useState<PDFDocumentProxy>();

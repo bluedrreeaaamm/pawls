@@ -148,7 +148,7 @@ const Page = ({ pageInfo, onError }: PageProps) => {
                 window.removeEventListener('resize', handleResize);
                 window.removeEventListener('scroll', determinePageVisiblity);
             };
-        } catch (e) {
+        } catch (e: any) {
             onError(e);
         }
     }, [pageInfo, onError]); // We deliberately only run this once.

@@ -1,4 +1,5 @@
 import React, { MouseEvent, useContext, useState, useEffect } from 'react';
+
 import styled, { ThemeContext } from 'styled-components';
 import { Modal, Select } from '@allenai/varnish';
 
@@ -191,7 +192,7 @@ const EditLabelModal = ({ annotation, onHide }: EditLabelModalProps) => {
             <Select<string>
                 value={selectedLabel.text}
                 onMouseDown={onMouseDown}
-                onChange={(labelText) => {
+                onChange={(labelText: any) => {
                     const label = annotationStore.labels.find((l) => l.text === labelText);
                     if (!label) {
                         return;

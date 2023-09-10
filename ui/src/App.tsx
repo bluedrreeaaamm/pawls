@@ -11,12 +11,13 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { createGlobalStyle } from 'styled-components';
 import { Result, Spin } from '@allenai/varnish';
-import { BrowserRouter, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+
+import { QuestionCircleOutlined } from '@ant-design/icons';
 
 import { PDFPage } from './pages';
 import { CenterOnPage } from './components';
 import { getAllocatedPaperStatus, PaperStatus } from './api';
-import { QuestionCircleOutlined } from '@ant-design/icons';
 
 const RedirectToFirstPaper = () => {
     const [papers, setPapers] = useState<PaperStatus[] | null>(null);
@@ -45,7 +46,7 @@ const RedirectToFirstPaper = () => {
             );
         }
 
-        return <Redirect to={`/pdf/${sha}`} />;
+        return <Navigate to={`/pdf/${sha}`} />;
     }, [papers]);
 
     return content;
@@ -55,8 +56,10 @@ const App = () => {
     return (
         <>
             <BrowserRouter>
-                <Route path="/" exact component={RedirectToFirstPaper} />
-                <Route path="/pdf/:sha" component={PDFPage} />
+                <Routes>
+                    <Route path="/" element={<RedirectToFirstPaper />} />
+                    <Route path="/pdf/:sha" element={<PDFPage />} />
+                </Routes>
             </BrowserRouter>
             <GlobalStyles />
         </>

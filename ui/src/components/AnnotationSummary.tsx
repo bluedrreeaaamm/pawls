@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
+
 import { Annotation, PDFStore, AnnotationStore } from '../context';
+
 import { Tag } from '@allenai/varnish';
 import styled from 'styled-components';
 import { DeleteFilled } from '@ant-design/icons';

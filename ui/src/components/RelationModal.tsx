@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+
 import { Modal, Tag, Transfer } from '@allenai/varnish';
 import { Annotation, RelationGroup, AnnotationStore } from '../context';
 import { Label } from '../api';
